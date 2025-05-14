@@ -1,6 +1,21 @@
 import React from 'react';
+import '@testing-library/jest-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import RetirementForm from './RetirementForm';
+
+// Mock RetirementChart so that it renders chart labels and probability as plain text
+jest.mock('./RetirementChart', () => {
+  return ({ chartData, probability }: { chartData: any, probability: number }) => (
+    <div data-testid="retirement-chart">
+      <div>
+        {chartData && chartData.labels && chartData.labels.map((label: string, idx: number) => (
+          <span key={idx}>{label}</span>
+        ))}
+      </div>
+      <div data-testid="probability">{probability}%</div>
+    </div>
+  );
+});
 
 // Reset fetch mocks before each test
 beforeEach(() => {
@@ -48,7 +63,7 @@ test('submits form and renders chart on successful API response', async () => {
   fireEvent.change(screen.getByLabelText(/Annual Cash Flows/i), { target: { value: '564' } });
   fireEvent.change(screen.getByLabelText(/Annual Liabilities/i), { target: { value: '231230' } });
   fireEvent.change(screen.getByLabelText(/Portfolio Current Value/i), { target: { value: '0' } });
-  fireEvent.change(screen.getByLabelText(/Equity Allocation/i), { target: { value: '20' } }); // UI input in 100% format
+  fireEvent.change(screen.getByLabelText(/Equity Allocation/i), { target: { value: '20' } });
   fireEvent.change(screen.getByLabelText(/Fixed Income Allocation/i), { target: { value: '60' } });
   fireEvent.change(screen.getByLabelText(/Other Allocation/i), { target: { value: '20' } });
   fireEvent.change(screen.getByLabelText(/Goal Amount/i), { target: { value: '342789' } });
@@ -63,9 +78,9 @@ test('submits form and renders chart on successful API response', async () => {
   });
 
   // Check that the probability is rendered as 50% (0.5 * 100)
-  expect(screen.getByText(/50%/i)).toBeInTheDocument();
+  expect(screen.getByTestId('probability')).toHaveTextContent('50%');
 
-  // Check that the chart labels (Year 1, Year 2, Year 3) are rendered
+  // Check that the mocked chart labels (Year 1, Year 2, Year 3) are rendered
   expect(screen.getByText('Year 1')).toBeInTheDocument();
   expect(screen.getByText('Year 2')).toBeInTheDocument();
   expect(screen.getByText('Year 3')).toBeInTheDocument();

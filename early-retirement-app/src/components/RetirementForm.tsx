@@ -81,73 +81,133 @@ const RetirementForm: React.FC = () => {
                     <h2>Retirement Planning Form</h2>
 
                     <div>
-                        <label>
+                        <label htmlFor="income">
                             Annual Income (₹):<span className="required-mark">*</span>
                         </label>
-                        <input type="number" value={income} onChange={(e) => setIncome(e.target.value)} required />
+                        <input 
+                            id="income"
+                            type="number" 
+                            value={income} 
+                            onChange={(e) => setIncome(e.target.value)} 
+                            required 
+                        />
                     </div>
 
                     <div>
-                        <label>
+                        <label htmlFor="expenses">
                             Annual Expenses (₹):<span className="required-mark">*</span>
                         </label>
-                        <input type="number" value={expenses} onChange={(e) => setExpenses(e.target.value)} required />
+                        <input 
+                            id="expenses"
+                            type="number" 
+                            value={expenses} 
+                            onChange={(e) => setExpenses(e.target.value)} 
+                            required 
+                        />
                     </div>
 
                     <div>
-                        <label>
+                        <label htmlFor="cashFlows">
                             Annual Cash Flows (₹):<span className="required-mark">*</span>
                         </label>
-                        <input type="number" value={cashFlows} onChange={(e) => setCashFlows(e.target.value)} required />
+                        <input 
+                            id="cashFlows"
+                            type="number" 
+                            value={cashFlows} 
+                            onChange={(e) => setCashFlows(e.target.value)} 
+                            required 
+                        />
                     </div>
 
                     <div>
-                        <label>
+                        <label htmlFor="liabilities">
                             Annual Liabilities (₹):<span className="required-mark">*</span>
                         </label>
-                        <input type="number" value={liabilities} onChange={(e) => setLiabilities(e.target.value)} required />
+                        <input 
+                            id="liabilities"
+                            type="number" 
+                            value={liabilities} 
+                            onChange={(e) => setLiabilities(e.target.value)} 
+                            required 
+                        />
                     </div>
 
                     <div>
-                        <label>
+                        <label htmlFor="portfolioValue">
                             Portfolio Current Value (₹):<span className="required-mark">*</span>
                         </label>
-                        <input type="number" value={portfolioValue} onChange={(e) => setPortfolioValue(e.target.value)} required />
+                        <input 
+                            id="portfolioValue"
+                            type="number" 
+                            value={portfolioValue} 
+                            onChange={(e) => setPortfolioValue(e.target.value)} 
+                            required 
+                        />
                     </div>
 
                     <div>
-                        <label>
+                        <label htmlFor="equityAllocation">
                             Equity Allocation (%):<span className="required-mark">*</span>
                         </label>
-                        <input type="number" value={equityAllocation} onChange={(e) => setEquityAllocation(e.target.value)} required />
+                        <input 
+                            id="equityAllocation"
+                            type="number" 
+                            value={equityAllocation} 
+                            onChange={(e) => setEquityAllocation(e.target.value)} 
+                            required 
+                        />
                     </div>
 
                     <div>
-                        <label>
+                        <label htmlFor="fixedIncomeAllocation">
                             Fixed Income Allocation (%):<span className="required-mark">*</span>
                         </label>
-                        <input type="number" value={fixedIncomeAllocation} onChange={(e) => setFixedIncomeAllocation(e.target.value)} required />
+                        <input 
+                            id="fixedIncomeAllocation"
+                            type="number" 
+                            value={fixedIncomeAllocation} 
+                            onChange={(e) => setFixedIncomeAllocation(e.target.value)} 
+                            required 
+                        />
                     </div>
 
                     <div>
-                        <label>
+                        <label htmlFor="otherAllocation">
                             Other Allocation (%):<span className="required-mark">*</span>
                         </label>
-                        <input type="number" value={otherAllocation} onChange={(e) => setOtherAllocation(e.target.value)} required />
+                        <input 
+                            id="otherAllocation"
+                            type="number" 
+                            value={otherAllocation} 
+                            onChange={(e) => setOtherAllocation(e.target.value)} 
+                            required 
+                        />
                     </div>
 
                     <div>
-                        <label>
+                        <label htmlFor="goal">
                             Goal Amount (₹):<span className="required-mark">*</span>
                         </label>
-                        <input type="number" value={goal} onChange={(e) => setGoal(e.target.value)} required />
+                        <input 
+                            id="goal"
+                            type="number" 
+                            value={goal} 
+                            onChange={(e) => setGoal(e.target.value)} 
+                            required 
+                        />
                     </div>
 
                     <div>
-                        <label>
+                        <label htmlFor="goalYears">
                             Goal Years:<span className="required-mark">*</span>
                         </label>
-                        <input type="number" value={goalYears} onChange={(e) => setGoalYears(e.target.value)} required />
+                        <input 
+                            id="goalYears"
+                            type="number" 
+                            value={goalYears} 
+                            onChange={(e) => setGoalYears(e.target.value)} 
+                            required 
+                        />
                     </div>
 
                     <button type="submit" disabled={loading}>
